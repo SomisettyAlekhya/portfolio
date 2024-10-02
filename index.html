@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', Times, serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #080808;
+            color: #fff;
+        }
+
+        #header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100vh;
+            background-color: #080808; /* Keep background dark */
+        }
+
+        /* Container to hold the logo and nav */
+        .left-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 40%;
+            padding-left: 20px;
+        }
+
+        /* Logo and Navigation */
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            width: 140px;
+        }
+
+        nav ul {
+            margin-left: 20px;
+            display: flex;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 20px;
+        }
+
+        /* Styling nav links as headers */
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 19px; /* Header-like font size */
+            font-weight: bold;
+            position: relative;
+            display: inline;
+            text-transform: uppercase; /* Make it look more like a header */
+        }
+       
+        
+
+        nav ul li a::after {
+            content: '';
+            width: 0;
+            height: 5px;
+            background: #ff004f;
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            transition: width 0.3s;
+            display: inline;
+        }
+        
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Right section with background image */
+        .right-section {
+            width: 40%;
+            height: 95vh;
+            background-image: url("image10.png");
+            background-size: cover;
+            background-position: right;
+            border-radius: 190px; /* Increased border-radius for a more visible effect */
+            overflow: hidden; /* Ensure the image respects the border-radius */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); /* Optional: Add shadow for a polished look */
+        }
+        
+        /* About section styling */
+        #about {
+            background-color: #fff;
+            padding: 40px;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+
+        #about h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        /* About section paragraph styling */
+        .about-paragraph {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        #projects {
+            padding: 50px 0;
+            background-color: #222;
+            color: #fff;
+        }
+
+        #projects h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .card {
+            background-color: #333;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            padding: 20px;
+            color: #fff;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #ff004f;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .card a:hover {
+            background-color: #ff3369;
+        }
+        #internships {
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#internships h2 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+.internship-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    background-color: #f4f4f9;
+    width: 250px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card h3 {
+    font-size: 1.5em;
+    color: #333;
+}
+
+.card p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 0.9em;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+        #education {
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#education h2 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f9;
+    color: #333;
+    text-transform: uppercase;
+    font-size: 1.2em;
+}
+
+td {
+    font-size: 1em;
+    color: #555;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+table {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+
+    </style>
+</head>
+<body>
+    <div id="header">
+        <div class="left-section">
+            <nav>
+                <img src="alekhya logo.png" class="logo">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#internships">Internships</a></li>
+                    <li><a href="#education">Education</a></li>
+                   
+                </ul>
+            </nav>
+            <br/>
+            <br/>
+
+            <p style="font-size: 24px;font-weight: bold;text-transform: uppercase;">I am <mark>Somisetty Alekhya</mark></p>
+            <br/>
+            <p style="font-size: 24px;font-weight: bold;text-transform: uppercase;">From Kurnool, Andhra Pradesh, India</p>
+        </div>
+        <div class="right-section">
+            <!-- Background image section -->
+        </div>
+    </div>
+    
+    <div id="about">
+        <h2>ABOUT ME</h2>
+        <p class="about-paragraph">
+            I am a highly motivated and dedicated individual with a passion for technology and innovation. I thrive in dynamic environments where I can collaborate with others and contribute to meaningful projects that create a positive impact.
+        </p>
+        <p class="about-paragraph">
+            Adaptability and continuous learning are central to my work philosophy. I believe in staying curious and pushing myself to evolve both personally and professionally. My commitment to excellence drives me to consistently take on challenges and deliver results that exceed expectations.
+        </p>
+        <p class="about-paragraph">
+            In every role I take on, I strive to maintain a high standard of communication and teamwork.
+        </p>
+    </div>
+    <div id="projects">
+        <h2>PROJECTS</h2>
+        <div class="card-container">
+            <!-- Project 1 -->
+            <div class="card">
+                <img src="download.jpg" alt="Catch Fruits Project">
+                <h3>Catch Fruits Game</h3>
+                <p>A fruit-catching game using HTML, CSS, and jQuery.</p>
+                <a href="https://somisettyalekhya.github.io/catchfruits/" target="_blank">View Project</a>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="card">
+                <img src="download (1).jpg" alt="Amazon Clone Project">
+                <h3>Amazon Clone</h3>
+                <p>A static clone of Amazon's homepage using HTML and CSS.</p>
+                <a href="https://somisettyalekhya.github.io/amazon-clone/" target="_blank">View Project</a>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="card">
+                <img src="download (3).jpg" alt="Zomato Clone Project">
+                <h3>Zomato Clone</h3>
+                <p>A static clone of Zomato's homepage using HTML and CSS.</p>
+                <a href="https://somisettyalekhya.github.io/zomato-clone/" target="_blank">View Project</a>
+            </div>
+            <!-- Project 4 -->
+            <div class="card">
+                <img src="download (4).jpg" alt="Detecting Brain Tumor and Pneumonia Project">
+                <h3>Detecting Brain Tumor and Pneumonia</h3>
+                <p>A project that detects brain tumors using neural networks.</p>
+                <a href="https://github.com/SomisettyAlekhya/detecting-braintumor-and-pneumonia/tree/main" target="_blank">View Project</a>
+            </div>
+            <div class="card">
+                <img src="todo.png" alt="To-do list">
+                <h3>To-do list</h3>
+                <p>built with React that allows users to add, delete, and manage tasks efficiently. </p>
+                <a href="https://nextleap.app/online-compiler/reactjs-programming/oi7hcqr8k" target="_blank">View Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="internships">
+        <h2>INTERNSHIPS</h2>
+        <div class="internship-cards">
+            <!-- Internship 1 -->
+            <div class="card">
+                <h3>Intern</h3>
+                <p>Tata Consultancy Services(TCS)</p>
+                <p>February 2024 - April 2024</p>
+                <button onclick="window.open('2710712-Somisetty Alekhya.pdf', '_blank')">View Certificate</button>
+            </div>
+            <!-- Internship 2 -->
+            <div class="card">
+                <h3>Web Developer Intern</h3>
+                <p>Phn Technology</p>
+                <p>April 2023 - June 2023</p>
+                <button onclick="window.open('102806 (2).pdf', '_blank')">View Certificate</button>
+            </div>
+            <!-- Internship 3 -->
+            <div class="card">
+                <h3>Growth Intern</h3>
+                <p>Accio Job</p>
+                <p>May 2022 - June 2022</p>
+                <button onclick="window.open('certificate-of-internship-acciojob (1) (1).png', '_blank')">View Certificate</button>
+            </div>
+            <div class="card">
+                <h3>Intern</h3>
+                <p>Emertxe</p>
+                <p>February 2022 - April 2022</p>
+                <button onclick="window.open('emertxe_internship_certificate_Somisetty_Alekhya (1).pdf', '_blank')">View Certificate</button>
+            </div>
+        </div>
+    </div>    
+    <div id="education">
+        <h2>EDUCATION</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Qualification</th>
+                    <th>Institution</th>
+                    <th>Year</th>
+                    <th>Grade/CGPA</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>B.Tech. (CST)</td>
+                    <td>G. Pulla Reddy Engineering College (Autonomous), Kurnool</td>
+                    <td>2020 – 2024</td>
+                    <td>9.5 CGPA</td>
+                </tr>
+                <tr>
+                    <td>Intermediate</td>
+                    <td>Narayana Junior College, Kurnool</td>
+                    <td>2018 – 2020</td>
+                    <td>10 CGPA</td>
+                </tr>
+                <tr>
+                    <td>SSC</td>
+                    <td>Narayana English Medium School, Kurnool</td>
+                    <td>2017 – 2018</td>
+                    <td>10 GPA</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+</body>
+</html>
