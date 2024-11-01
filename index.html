@@ -1,0 +1,626 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio | Somisetty Alekhya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-100%); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes bounceIn {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            padding: 15px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .navbar.scrolled {
+            background-color: #222;
+        }
+
+        .navbar .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            animation: bounceIn 1s ease;
+        }
+
+        .navbar ul {
+            display: flex;
+            list-style: none;
+        }
+
+        .navbar ul li {
+            margin-left: 20px;
+            animation: slideIn 1.5s ease-in-out;
+        }
+
+        .navbar ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2em;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .navbar ul li a:hover {
+            color: #ff004f;
+        }
+
+        /* Header Section */
+        #header {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("header-bg.jpg") no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column; /* Changed to column to stack elements */
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            text-align: center;
+            padding-top: 60px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        #header h1 {
+            font-size: 4em;
+            margin-bottom: 10px; /* Adjusted margin */
+            text-transform: uppercase;
+            animation: fadeIn 1.5s ease;
+        }
+
+        /* Scrolling Text */
+        .scrolling-text {
+            white-space: nowrap; /* Prevent line breaks */
+            font-size: 1.5em; /* Font size for scrolling text */
+            color: #ff004f; /* Text color */
+            overflow: hidden;
+            position: relative; /* Allow relative positioning for animation */
+            animation: scroll 10s linear infinite; /* Infinite scrolling animation */
+            margin-bottom: 20px; /* Space between scrolling text and next element */
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .btn {
+            padding: 10px 25px;
+            background-color: #ff004f;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 1.2em;
+            transition: background-color 0.3s, transform 0.3s;
+            animation: bounceIn 2.5s ease;
+        }
+
+        .btn:hover {
+            background-color: #ff3369;
+            transform: translateY(-5px);
+        }
+
+        /* About Section */
+        #about {
+            background-color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        #about h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #333;
+            animation: fadeIn 1.5s ease;
+        }
+
+        #about p {
+            font-size: 1.2em;
+            color: #666;
+            max-width: 900px;
+            margin: 0 auto 30px;
+            line-height: 1.6;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Projects Section */
+        #projects {
+            background-color: #f8f9fa;
+            padding: 50px 20px;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        #projects h2 {
+            font-size: 2.5em;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #333;
+            animation: fadeIn 1s ease;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            animation: fadeIn 1.8s ease-in;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            padding: 20px;
+            color: #333;
+            text-align: center;
+            transition: transform 0.3s;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .card img:hover {
+            opacity: 0.8;
+        }
+
+        .card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #fff;
+            background-color: #ff004f;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        .card a:hover {
+            background-color: #ff3369;
+        }
+
+        /* Internships Section */
+        #internships {
+            background-color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        #internships h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .internship-cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .internship-cards .card {
+            width: 250px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: translateY(-5px);
+        }
+
+        /* Education Section */
+      #education {
+            background-color: #f8f9fa;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+
+        #education h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        .education-cards {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            animation: fadeIn 2s ease-in;
+        }
+
+        .education-card {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            padding: 20px;
+            color: #333;
+            text-align: center;
+            margin: 15px;
+            transition: transform 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .education-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .education-card p {
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        #contact {
+            background-color: #fff;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1s ease;
+        }
+
+        #contact h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form input, form textarea {
+            width: 300px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        form button {
+            background-color: #ff004f;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #ff3369;
+        }
+        #resume {
+            background-color: #f8f9fa;
+            padding: 50px 20px;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in;
+        }
+
+        #resume h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .download-resume {
+            margin-top: 30px;
+        }
+
+        .download-resume a {
+            text-decoration: none;
+            background-color: #ff004f;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .download-resume a:hover {
+            background-color: #ff3369;
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            position: relative;
+            animation: fadeIn 1s ease;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">My Portfolio</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#internships">Internships</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#resume">Resume</a></li>
+        </ul>
+    </nav>
+
+    <section id="header">
+        <h1>Somisetty Alekhya</h1>
+        <br/>
+        <p class="scrolling-text">Web Developer,Data Scientist, Problem Solver, Innovator</p> <!-- Scrolling text below the name -->
+   
+        <a href="#about" class="btn">Learn More</a>
+        
+        <script>
+            const texts = ["Web Developer", "Problem Solver", "Innovator"];
+            let index = 0;
+            const typedText = document.getElementById('typed');
+
+            function typeText() {
+                typedText.textContent = texts[index];
+                index = (index + 1) % texts.length;
+                setTimeout(() => {
+                    typedText.textContent = '';
+                    setTimeout(typeText, 500);
+                }, 2000);
+            }
+
+            typeText();
+
+            // Change navbar background on scroll
+            window.addEventListener('scroll', () => {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 0) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        </script>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            Welcome to my portfolio! I am a passionate and versatile individual dedicated to
+             crafting clean, modern, and responsive digital experiences. With a focus on
+              usability and aesthetics, I specialize in creating solutions that not only 
+            look great but also function seamlessly across all devices.
+        </p>
+    </section>
+
+    <section id="projects">
+        <h2>My Projects</h2>
+        <div class="card-container">
+            <!-- Project cards go here -->
+            <div class="card">
+                <img src="download.jpg" alt="Catch Fruits Project">
+                <h3>Catch Fruits Game</h3>
+                <p>A fruit-catching game using HTML, CSS, and jQuery.</p>
+                <a href="https://somisettyalekhya.github.io/catchfruits/" target="_blank">View Project</a>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="card">
+                <img src="download (1).jpg" alt="Amazon Clone Project">
+                <h3>Amazon Clone</h3>
+                <p>A static clone of Amazon's homepage using HTML and CSS.</p>
+                <a href="https://somisettyalekhya.github.io/amazon-clone/" target="_blank">View Project</a>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="card">
+                <img src="download (3).jpg" alt="Zomato Clone Project">
+                <h3>Zomato Clone</h3>
+                <p>A static clone of Zomato's homepage using HTML and CSS.</p>
+                <a href="https://somisettyalekhya.github.io/zomato-clone/" target="_blank">View Project</a>
+            </div>
+             <!-- Project 4 -->
+             <div class="card">
+                <img src="download (4).jpg" alt="Detecting Brain Tumor and Pneumonia Project">
+                <h3>Detecting Brain Tumor and Pneumonia</h3>
+                <p>A project that detects brain tumors using neural networks.</p>
+                <a href="https://github.com/SomisettyAlekhya/detecting-braintumor-and-pneumonia/tree/main" target="_blank">View Project</a>
+            </div>
+            <div class="card">
+                <img src="todo.png" alt="To-do list">
+                <h3>To-do list</h3>
+                <p>built with React that allows users to add, delete, and manage tasks efficiently. </p>
+                <a href="https://nextleap.app/online-compiler/reactjs-programming/oi7hcqr8k" target="_blank">View Project</a>
+            </div>
+            <div class="card">
+                <img src="notpad.png" alt="Data Analysis">
+                <h3>Own Notepad</h3>
+                <p>This Java application provides a basic notepad functionality, allowing users to create, open, save, and edit text files
+                 with a simple graphical interface.</p>
+                <a href="https://github.com/SomisettyAlekhya/ownnotepad" target="_blank">View Project</a>
+            </div>
+            <hr style="border: 1px solid #000;"/>
+            <div class="card">
+                <img src="Vrinda Store Data Analysis.png" alt="Data Analysis">
+                <h3>Vrinda Store Data Analysis</h3>
+                <p>Vrinda Store Data Analysis provides insights into sales trends, customer preferences, and inventory management to enhance business decision-making.</p>
+                <a href="https://onedrive.live.com/view.aspx?resid=1C5784123779E926%21279&authkey=!APg3qhugp_NmGW0" target="_blank">View Project</a>
+            </div>
+            <div class="card">
+                <img src="Tableau - HR Report - Tableau license expires in 11 days 01-11-2024 10_10_31.png" alt="Data Analysis">
+                <h3>HR Analytics Dashboard</h3>
+                <p>Utilized Tableau to analyze HR metrics, visualizing employee performance and retention trends, which enabled data-driven decision-making. </p>
+                <a href="https://www.loom.com/share/92d3a77942d84b198f23948708c928ec?sid=b43add96-9b71-409b-9105-9dcdca0814e6" target="_blank">View Project</a>
+            </div>
+            <div class="card">
+                <img src="Tableau - Tableau Basics - Tableau license expires in 11 days 01-11-2024 10_18_05.png" alt="Data Analysis">
+                <h3>Supermarket Store</h3>
+                <p>Summarizing key data points 
+                    about the supermarket's 
+                    performance, products, and sales 
+                    trends.</p>
+                <a href="https://www.loom.com/share/4d63542939a0464d88ea536ee0bef299?sid=daa597e5-2ae4-4147-8132-5c900420270a" target="_blank">View Project</a>
+            </div>
+
+
+
+        </div>
+    </section>
+
+    <section id="internships">
+        <h2>Internships</h2>
+        <div class="internship-cards">
+            <!-- Internship cards go here -->
+            <div class="card">
+                <h3>Intern</h3>
+                <p>Tata Consultancy Services(TCS)</p>
+                <p>February 2024 - April 2024</p>
+                <button onclick="window.open('2710712-Somisetty Alekhya.pdf', '_blank')">View Certificate</button>
+            </div>
+            <!-- Internship 2 -->
+            <div class="card">
+                <h3>Web Developer Intern</h3>
+                <p>Phn Technology</p>
+                <p>April 2023 - June 2023</p>
+                <button onclick="window.open('102806 (2).pdf', '_blank')">View Certificate</button>
+            </div>
+            <!-- Internship 3 -->
+            <div class="card">
+                <h3>Growth Intern</h3>
+                <p>Accio Job</p>
+                <p>May 2022 - June 2022</p>
+                <button onclick="window.open('certificate-of-internship-acciojob (1) (1).png', '_blank')">View Certificate</button>
+            </div>
+            <div class="card">
+                <h3>Intern</h3>
+                <p>Emertxe</p>
+                <p>February 2022 - April 2022</p>
+                <button onclick="window.open('emertxe_internship_certificate_Somisetty_Alekhya (1).pdf', '_blank')">View Certificate</button>
+            </div>
+        </div>
+    </section>
+
+   <section id="education">
+        <h2>Education</h2>
+        <div class="education-cards">
+            <div class="education-card">
+                <h3>B Tech</h3>
+                <h3>G PullaReddy Engineering College</h3>
+                <p>Duration:2020-2024</p>
+                <p>CGPA-9.5</p>
+            </div>
+            <div class="education-card">
+                <h3>Intermediate</h3>
+                <h3>Narayana Junior College</h3>
+                <p>Duration:2018-2020</p>
+                <p>CGPA-10</p>
+            </div>
+            <div class="education-card">
+                <h3>Schooling</h3>
+                <h3>Narayana EM School</h3>
+                <p>Duration:2017-2018</p>
+                <p>CGPA-10</p>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        
+    </section>
+    <section id="resume">
+        <h2>Download My Resume</h2>
+        <div class="download-resume">
+            <a href="Somisetty Alekhya 209X1A2822 CST.pdf" download>Download Resume</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Somisetty Alekhya</p>
+    </footer>
+</body>
+</html>
